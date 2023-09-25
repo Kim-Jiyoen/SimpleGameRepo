@@ -1,3 +1,6 @@
+# Youtube Reference
+https://www.youtube.com/watch?v=BySDfVNljG8&list=PL6xSOsbVA1eb_QqMTTcql_3PdOiE928up&index=2
+
 # SFML 라이브러리 설치
 
 ## 웹사이트
@@ -21,19 +24,22 @@ https://www.sfml-dev.org/download/sfml/2.6.0/
 
 # VS 2022 환경 설정
 
-- solution Explorer > Drop Down Menu > Properties
+- VS 2022 에디터 상단 툴바 > Solution Platform > x86으로 선택
+- solution Explorer > SimpleGame이름에 우클릭 > Drop Down Menu > Properties
 - 상단 공통 영역 
 	- Configuration > All Configuration
 	- Platform > win32
 - C/C++ > General > Additional include Directories
 	- SFML에서 복사해온 파일/폴더가 있는 위치(폴더)를 선택
-	- $(SolutionDir) : 현재 프로젝트 폴더
+	- $(SolutionDir) : 현재 프로젝트 폴더 표시 입력
+	- 최종 입력 형태: $(SolutionDir)\External\include
 	
 - LInker > General > Additional Library Directories
 	- SFML에서 복사해온 파일/폴더가 있는 위치(폴더)를 선택
+	- 최종 입력 형태: $(SolutionDir)\External\lib
 	
 - LInker > Input > additional Dependancies
-	- Configuration > Release
+	- Configuration > Release 카테고리를 선택
 ```
 sfml-system.lib
 sfml-graphics.lib
@@ -65,6 +71,15 @@ sfml-network-d.lib
 
 ## Event Handling 
 
-- Event Delegate
-- Event Listning
+- Event Delegate : 여러개의 이벤트에 대응
+- Event Listning : 이벤트 감지
+- Event Handle : 감지된 이벤트에 대해서 적절한 동작 
+
+# Game Loop
+
+# SimpleGame 프로젝트에 구현한 Game 클래스
+
+- 게임을 전반적으로 Control 하는 클래스
+- Enemy 생성
+- player 생성
 

@@ -1,41 +1,102 @@
 #pragma once
+#include <iostream>
+#include <vector>
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
+
+using namespace sf;
+using namespace std;
 
 class Game
 {
 private:
+	/*
+	* Window
+	*/
+	RenderWindow* Window; // 메모리 부담 덜 주기 위해 포인터 사용
+	Event e;
 
-	//Window
-	sf::RenderWindow* Window;
-	sf::VideoMode VMode;
+	// Window 포인터 변수 초기화
+	void InitWindowPointer();
 
-	// Event
-	sf::Event Event;
-
-	void InitVariable();
+	// Window 동적 생성
 	void InitWindow();
 
-public:
-	// Constructor
-	Game();
+	// 동적 생성된 Window 삭제
+	void DeleteWindow();
+
+	/*
+	* Enemy
+	*/
+	RectangleShape RectEnemy;
+	vector<RectangleShape> RectEnemies;
+
+	// Spawn Value
+	float EnemySpawnTime;
+	float EnemySpawnTimeMax;
+	int EnemyMaxNumber;
+
+	//Set Spawn Value
+	void SetSpawnValue();
+
+	// Init RectEnemy
+	void InitRectEnemy();
+
+	/*
+	* Player
+	*/
+	CircleShape Player;
 	
-	// Destructor
+	// Init Player
+	void InitPlayer();
+
+
+public:
+	/*
+	* 생성자 & 소멸자
+	*/
+	Game();
 	~Game();
 
-	// function
+	/*
+	* Enemy
+	*/
+	
 
-	const bool IsCreate();
+	// Spawn Enemy
+	void SpawnEnemy();
 
-	void ExecEvent();
+	void UpdateEnemy();
+
+	/*
+	* player
+	*/
+	void UpdatePlayer();
+
+	/*
+	* Collision
+	*/
+
+	void UpdateCollision();
+
+	void GameOver();
+
+	/*
+	* Game Loop
+	*/
+	// 앞 const: 반환값이 변경되지 않음
+	// 뒤 const: 매개변수, 함수 내부 값이 변경되지 않음
+
+	const bool Running() const;
+
+	void EventHandler();
 
 	void Update();
 
 	void Render();
-
 };
 

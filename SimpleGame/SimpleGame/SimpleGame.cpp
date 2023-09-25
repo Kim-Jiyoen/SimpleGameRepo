@@ -2,19 +2,28 @@
 //
 
 #include <iostream>
+#include <ctime>
+// #include "SimpleGame.h"
 #include "Game.h"
+
 
 int main()
 {
-	//Game Simple;
+	srand(time(NULL));
 
-	//while (Simple.IsCreate())
-	//{
-	//	//Window.clear(sf::Color(100,100,100,255)); // 마지막 255: alpha(투명도)
-	//	Window.clear(sf::Color::Magenta); // 마지막 255: alpha(투명도)
+	Game SimpleGame;
 
-	//	Window.display();
-	//}
+	// Game Loop
+	while (SimpleGame.Running())
+	{
+		SimpleGame.EventHandler();
+
+		SimpleGame.Update();
+
+		SimpleGame.Render();
+	}
+
+
 }
 
 
